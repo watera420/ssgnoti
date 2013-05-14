@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="설정"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+       
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:text="알람 받을 부서를  선택해주세요." />
+    
+   <ListView
+        android:id="@+id/testListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    />
+    
+</LinearLayout>
