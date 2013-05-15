@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-<LinearLayout
+ <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
@@ -35,21 +36,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="부서 : " />
+            android:text="부서 : 온라인백화점팀" />
 
-        <Button
+<!--         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="부서선택" />
+            android:text="부서선택" /> -->
 
 
-    </LinearLayout>
+    </LinearLayout> 
     
    <ListView
-        android:id="@+id/testListView"
+        android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector"
     />
     
 </LinearLayout>
