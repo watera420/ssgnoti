@@ -1,37 +1,43 @@
 package com.shinsegae.android.ssgnoti;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
-public class SelsmsActivity extends ListActivity {
+public class SelsmsActivity extends Activity implements OnItemClickListener  {
+	String[] msg = new String[] { "당신의 생일을 축하합니다"
+			, "당신의 생일을 축하합니다"
+			, "당신의 생일을 축하합니다"
+			, "당신의 생일을 축하합니다"
+			, "당신의 생일을 축하합니다" };
+
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.list);
+		setContentView(R.layout.selsms);
 		
-		String[] smslist = getResources().getStringArray(R.array.smslist_array);
-		setListAdapter(new ArrayAdapter<String>(this, R.layout.row,	smslist));	
+		ListView lv =(ListView) findViewById(R.id.listView1);
 		
+		ArrayAdapter<String> adapter;
 		
-		ListView lv = getListView();
-		lv.setTextFilterEnabled(true);
-		
-		lv.setOnItemClickListener(new OnItemClickListener() {
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, msg);
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position,
-					long id) {
-				Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-				
-			}
-		});	
+		lv.setAdapter(adapter);
+		
+		lv.setOnItemClickListener(this);
+		
+	}
+
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		
 	}
 }
