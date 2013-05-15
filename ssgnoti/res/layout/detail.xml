@@ -85,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="callBtn"
             android:text="전화걸기" />
 
         <Button
@@ -92,6 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="smsBtn"
             android:text="축하문자" />
 
         <Button
@@ -99,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="shopBtn"
             android:text="선물보기" />
 
     </LinearLayout>
