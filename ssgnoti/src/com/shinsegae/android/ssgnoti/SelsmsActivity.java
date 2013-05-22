@@ -12,21 +12,22 @@ import android.widget.ListView;
 
 
 public class SelsmsActivity extends Activity implements OnItemClickListener  {
-	String[] msg = new String[] { "당신의 생일을 축하합니다"
-			, "당신의 생일을 축하합니다"
-			, "당신의 생일을 축하합니다"
-			, "당신의 생일을 축하합니다"
-			, "당신의 생일을 축하합니다" };
+	String[] msg = new String[] { "당신의 생일을 축하합니다1"
+								, "당신의 생일을 축하합니다2"
+								, "당신의 생일을 축하합니다3"
+								, "당신의 생일을 축하합니다4"
+								, "당신의 생일을 축하합니다5" };
 
+
+	ArrayAdapter<String> adapter;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.selsms);
 		
 		ListView lv =(ListView) findViewById(R.id.listView1);
 		
-		ArrayAdapter<String> adapter;
 		
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, msg);
 
@@ -54,7 +55,7 @@ public class SelsmsActivity extends Activity implements OnItemClickListener  {
 		
 		Uri uri = Uri.parse("smsto:01071664173");   
 		Intent it = new Intent(Intent.ACTION_SENDTO, uri);   
-		it.putExtra("sms_body", msg);   
+		it.putExtra("sms_body", msg[arg2]);   
 		startActivity(it); 
 		
 	}
