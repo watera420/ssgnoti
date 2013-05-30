@@ -8,71 +8,94 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract.Contacts.Data;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
-    // All static variables
-    static final String URL = "http://1.234.89.248/1/birthinfo.xml";
-    // XML node keys
-    static final String KEY_SONG = "employee"; // parent node
-    static final String KEY_ID = "id";
-    static final String KEY_TITLE = "name";
-    static final String KEY_ARTIST = "birth";
-    static final String KEY_DURATION = "position";
-    static final String KEY_THUMB_URL = "thumb_url";
- 
-    ListView list;
-    LazyAdapter adapter;
+	// All static variables
+	static final String URL = "http://1.234.89.248/1/birthinfo.xml";
+	// XML node keys
+	static final String KEY_SONG = "employee"; // parent node
+	static final String KEY_ID = "id";
+	static final String KEY_NAME = "name";
+	static final String KEY_ARTIST = "birth";
+	static final String KEY_DURATION = "position";
+	static final String KEY_THUMB_URL = "thumb_url";
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	ListView list;
+	LazyAdapter adapter;
+	ArrayList<HashMap<String, String>> songsList;
 
-        ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
-        
-        XMLParser parser = new XMLParser();
-        String xml = parser.getXmlFromUrl(URL); // getting XML from URL
-        Document doc = parser.getDomElement(xml); // getting DOM element
-        
-        NodeList nl = doc.getElementsByTagName(KEY_SONG);
-        // looping through all song nodes <song>
-        for (int i = 0; i < nl.getLength(); i++) {
-            // creating new HashMap        
-            HashMap<String, String> map = new HashMap<String, String>();
-            Element e = (Element) nl.item(i);
-            // adding each child node to HashMap key => value
-            map.put(KEY_ID, parser.getValue(e, KEY_ID));
-            map.put(KEY_TITLE, parser.getValue(e, KEY_TITLE));
-            map.put(KEY_ARTIST, parser.getValue(e, KEY_ARTIST));
-            map.put(KEY_DURATION, parser.getValue(e, KEY_DURATION));
-            map.put(KEY_THUMB_URL, parser.getValue(e, KEY_THUMB_URL));
-            
-            // adding HashList to ArrayList
-            songsList.add(map);
-        }
-        
-        list=(ListView)findViewById(R.id.list);
- 
-        // Getting adapter by passing xml data ArrayList
-        adapter=new LazyAdapter(this, songsList);
-        list.setAdapter(adapter);        
-        
-        // Click event for single list row
-        list.setOnItemClickListener(new OnItemClickListener() {
- 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                    int position, long id) {
- 
-            }
-        });
-    }        
-        
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		songsList = new ArrayList<HashMap<String, String>>();
+
+		XMLParser parser = new XMLParser();
+		String xml = parser.getXmlFromUrl(URL); // getting XML from URL
+		Document doc = parser.getDomElement(xml); // getting DOM element
+
+		NodeList nl = doc.getElementsByTagName(KEY_SONG);
+		// looping through all song nodes <song>
+		for (int i = 0; i < nl.getLength(); i++) {
+			// creating new HashMap
+			HashMap<String, String> map = new HashMap<String, String>();
+			Element e = (Element) nl.item(i);
+			// adding each child node to HashMap key => value
+			map.put(KEY_ID, parser.getValue(e, KEY_ID));
+			map.put(KEY_NAME, parser.getValue(e, KEY_NAME));
+			map.put(KEY_ARTIST, parser.getValue(e, KEY_ARTIST));
+			map.put(KEY_DURATION, parser.getValue(e, KEY_DURATION));
+			map.put(KEY_THUMB_URL, parser.getValue(e, KEY_THUMB_URL));
+
+			// adding HashList to ArrayList
+			songsList.add(map);
+		}
+
+		list = (ListView) findViewById(R.id.list);
+
+		// Getting adapter by passing xml data ArrayList
+		adapter = new LazyAdapter(this, songsList);
+		list.setAdapter(adapter);
+
+		// Click event for single list row
+		list.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+
+				Log.i("TTTT" ,"songsList.get(position-1) : " + songsList.get(position-1));
+				HashMap<String, String> str = (HashMap<String, String>) songsList.get(position-1);
+				Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+				String key_id = str.get(KEY_ID);
+				String name = str.get(KEY_NAME);
+				String birty = str.get(KEY_ARTIST);
+				String pn = str.get(KEY_DURATION);
+				String dept = str.get(KEY_THUMB_URL);
+				
+		        Log.i("TTTT" ,"intentString : " + key_id);
+		        
+
+		        intent.putExtra("id", key_id);
+		        intent.putExtra("name", name);
+		        intent.putExtra("dept", dept);
+		        intent.putExtra("pn", pn);
+		        intent.putExtra("birty", birty);
+		        startActivity(intent);
+		        
+
+			}
+		});
+
+	}
+
 }
-
-

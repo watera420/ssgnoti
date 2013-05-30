@@ -51,7 +51,7 @@ public class LazyAdapter extends BaseAdapter {
         song = data.get(position);
  
         // Setting all values in listview
-        title.setText(song.get(MainActivity.KEY_TITLE));
+        title.setText(song.get(MainActivity.KEY_NAME));
         artist.setText(song.get(MainActivity.KEY_ARTIST));
         duration.setText(song.get(MainActivity.KEY_DURATION));
         imageLoader.DisplayImage(song.get(MainActivity.KEY_THUMB_URL), thumb_image);
