@@ -21,15 +21,18 @@ public class MainActivity extends Activity {
 	// All static variables
 	static final String URL = "http://1.234.89.248/1/birthinfo.xml";
 	// XML node keys
-	static final String KEY_SONG = "employee"; // parent node
-	static final String KEY_ID = "id";
-	static final String KEY_NAME = "name";
-	static final String KEY_ARTIST = "birth";
-	static final String KEY_DURATION = "position";
-	static final String KEY_THUMB_URL = "thumb_url";
+	static final String KEY_EMPINFO = "employee"; // parent node
+	static final String KEY_ID = "id";        // 사번
+	static final String KEY_NAME = "name";    // 이름
+	static final String KEY_DEPT = "dept";    // 부서 
+	static final String KEY_BIRTH = "birth"; // 생년월일
+	static final String KEY_PN = "pn"; // 핸드폰번호
+	static final String KEY_POSITION = "position";  // 직책
+	static final String KEY_THUMB_URL = "thumb_url"; // 이미지 URL
 
 	ListView list;
 	LazyAdapter adapter;
+	
 	ArrayList<HashMap<String, String>> songsList;
 
 	@Override
@@ -43,17 +46,20 @@ public class MainActivity extends Activity {
 		String xml = parser.getXmlFromUrl(URL); // getting XML from URL
 		Document doc = parser.getDomElement(xml); // getting DOM element
 
-		NodeList nl = doc.getElementsByTagName(KEY_SONG);
+		NodeList nl = doc.getElementsByTagName(KEY_EMPINFO);
 		// looping through all song nodes <song>
 		for (int i = 0; i < nl.getLength(); i++) {
 			// creating new HashMap
 			HashMap<String, String> map = new HashMap<String, String>();
 			Element e = (Element) nl.item(i);
 			// adding each child node to HashMap key => value
+			
 			map.put(KEY_ID, parser.getValue(e, KEY_ID));
 			map.put(KEY_NAME, parser.getValue(e, KEY_NAME));
-			map.put(KEY_ARTIST, parser.getValue(e, KEY_ARTIST));
-			map.put(KEY_DURATION, parser.getValue(e, KEY_DURATION));
+			map.put(KEY_DEPT, parser.getValue(e, KEY_DEPT));
+			map.put(KEY_BIRTH, parser.getValue(e, KEY_BIRTH));
+			map.put(KEY_PN, parser.getValue(e, KEY_PN));			
+			map.put(KEY_POSITION, parser.getValue(e, KEY_POSITION));
 			map.put(KEY_THUMB_URL, parser.getValue(e, KEY_THUMB_URL));
 
 			// adding HashList to ArrayList
@@ -73,23 +79,40 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 
-				Log.i("TTTT" ,"songsList.get(position-1) : " + songsList.get(position-1));
-				HashMap<String, String> str = (HashMap<String, String>) songsList.get(position-1);
+			    Log.i("TTTT" ,"songsList.get(position) : " + songsList.get(position));
 				Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-				String key_id = str.get(KEY_ID);
-				String name = str.get(KEY_NAME);
-				String birty = str.get(KEY_ARTIST);
-				String pn = str.get(KEY_DURATION);
-				String dept = str.get(KEY_THUMB_URL);
+				intent.putExtra("songsList", (HashMap<String, String>) songsList.get(position));
 				
-		        Log.i("TTTT" ,"intentString : " + key_id);
+				startActivity(intent);
+				
+				/*String emp_id = str.get(KEY_ID);
+				String name = str.get(KEY_NAME);
+				String pst = str.get(KEY_POSITION);
+				String dept = str.get(KEY_DEPT);
+				String birty = str.get(KEY_BIRTH);
+				String pn = str.get(KEY_PN);
+				String image_url = str.get(KEY_THUMB_URL);
+				
+				intent.putExtra("id", str.get(KEY_ID));
+		        intent.putExtra("name", str.get(KEY_NAME));
+		        intent.putExtra("pst", str.get(KEY_POSITION));
+		        intent.putExtra("dept", str.get(KEY_DEPT));
+		        intent.putExtra("birty", birty);
+		        intent.putExtra("pn", pn);
+		        intent.putExtra("image_url", image_url);*/
+				
+				
+				
+/*		        Log.i("TTTT" ,"intentString : " + emp_id);
 		        
 
-		        intent.putExtra("id", key_id);
+		        intent.putExtra("id", emp_id);
 		        intent.putExtra("name", name);
+		        intent.putExtra("pst", pst);
 		        intent.putExtra("dept", dept);
-		        intent.putExtra("pn", pn);
 		        intent.putExtra("birty", birty);
+		        intent.putExtra("pn", pn);
+		        intent.putExtra("image_url", image_url);*/
 		        startActivity(intent);
 		        
 

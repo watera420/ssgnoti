@@ -1,6 +1,6 @@
 package com.shinsegae.android.ssgnoti;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashMap; 
 
 import android.app.Activity;
 import android.content.Context;
@@ -42,19 +42,20 @@ public class LazyAdapter extends BaseAdapter {
         if(convertView==null)
             vi = inflater.inflate(R.layout.list_row, null);
  
-        TextView title = (TextView)vi.findViewById(R.id.title); // title
-        TextView artist = (TextView)vi.findViewById(R.id.artist); // artist name
-        TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
+        TextView name = (TextView)vi.findViewById(R.id.name); // title
+        TextView birthday = (TextView)vi.findViewById(R.id.birthday); // artist name
+        TextView d_day = (TextView)vi.findViewById(R.id.d_day); // duration
         ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
  
         HashMap<String, String> song = new HashMap<String, String>();
         song = data.get(position);
  
         // Setting all values in listview
-        title.setText(song.get(MainActivity.KEY_NAME));
-        artist.setText(song.get(MainActivity.KEY_ARTIST));
-        duration.setText(song.get(MainActivity.KEY_DURATION));
+        name.setText(song.get(MainActivity.KEY_NAME)+" "+song.get(MainActivity.KEY_POSITION));
+        birthday.setText(song.get(MainActivity.KEY_BIRTH));
+        d_day.setText(song.get(MainActivity.KEY_POSITION));
         imageLoader.DisplayImage(song.get(MainActivity.KEY_THUMB_URL), thumb_image);
         return vi;
     }
 }
+

@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#458C6B"
+        android:text="축하 문구"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	<ListView
+		android:layout_height="wrap_content"
+		android:id="@+id/listView1"
+		android:layout_width="fill_parent"></ListView>
+
+    
+</LinearLayout>

@@ -53,7 +53,9 @@ public class SelsmsActivity extends Activity implements OnItemClickListener  {
 		// 현재 리스트뷰에 나오는 문자열과 해당 라인의 id값을 확인
 		//a.setText("선택된 값 : " + tv.getText() + "\n선택된 id값: " + arg2);*/
 		
-		Uri uri = Uri.parse("smsto:01071664173");   
+		Intent intent = getIntent();
+		
+		Uri uri = Uri.parse("smsto:"+intent.getExtras().get("phone"));   
 		Intent it = new Intent(Intent.ACTION_SENDTO, uri);   
 		it.putExtra("sms_body", msg[arg2]);   
 		startActivity(it); 

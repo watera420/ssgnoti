@@ -1,8 +1,12 @@
-package com.shinsegae.android.ssgnoti;
+package com.shinsegae.android.ssgnoti; 
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
  
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -34,18 +38,34 @@ public class XMLParser {
      * Getting XML from URL making HTTP request
      * @param url string
      * */
-    public String getXmlFromUrl(String url) {
+    public String getXmlFromUrl(String url ) {
         String xml = null;
- 
+        
+        InputStream contentInputStream = null;
+        
         try {
             // defaultHttpClient
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost httpPost = new HttpPost(url);
  
             HttpResponse httpResponse = httpClient.execute(httpPost);
+            
             HttpEntity httpEntity = httpResponse.getEntity();
-            xml = EntityUtils.toString(httpEntity);
- 
+            
+            contentInputStream =  httpEntity.getContent();
+            
+            //xml = EntityUtils.toString(httpEntity);
+            
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader( contentInputStream, "utf-8" ));
+         StringBuffer stringBuffer = new StringBuffer();
+            
+         String line = null;
+      while((line = bufferedReader.readLine()) != null) {
+       stringBuffer.append(line);
+      }
+            
+            xml = stringBuffer.toString();
+            
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {
@@ -70,7 +90,9 @@ public class XMLParser {
  
             InputSource is = new InputSource();
                 is.setCharacterStream(new StringReader(xml));
-                doc = db.parse(is); 
+                is.setEncoding("utf-8");
+                doc = db.parse(is);
+                
  
             } catch (ParserConfigurationException e) {
                 Log.e("Error: ", e.getMessage());
@@ -113,3 +135,4 @@ public class XMLParser {
             return this.getElementValue(n.item(0));
         }
 }
+

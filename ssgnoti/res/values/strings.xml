@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="smslist_array">
-        <item>생일축하합니다1</item>
-        <item>생일축하합니다2</item>
-        <item>생일축하합니다3</item>
-        <item>생일축하합니다4</item>
-        <item>생일축하합니다5</item>
-        <item>생일축하합니다6</item>
-        <item>생일축하합니다7</item>
-        <item>생일축하합니다8</item>
-        <item>생일축하합니다9</item>
-        <item>생일축하합니다0</item>
-        <item>생일축하합니다</item>
-    </string-array>
     
     <string name="app_name">ssgnoti</string>
     <string name="action_settings">Settings</string>
