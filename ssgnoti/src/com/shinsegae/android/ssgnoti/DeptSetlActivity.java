@@ -33,13 +33,15 @@ public class DeptSetlActivity extends Activity implements OnItemClickListener {
 	}
 
 	
-	// 부서값을 받아서 다시 MAIN으로 넘겨줘야 함 ㅠㅠ 어떻게 하지?
-	
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	public void onItemClick(AdapterView<?> parent, View arg1, int arg2, long arg3) {
 
-		Intent intent = getIntent();
-
+	     
+	    // 클릭된 아이템의 포지션을 이용해 스트링어레이에서 아이템을 꺼내온다.
+	    
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.putExtra("dept", adapter.getItem(arg2));	
+		
 		startActivity(intent);
 
 	}

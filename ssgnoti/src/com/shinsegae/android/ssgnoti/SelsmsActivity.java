@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 
 public class SelsmsActivity extends Activity implements OnItemClickListener  {
-	String[] msg = new String[] { "당신의 생일을 축하합니다1"
+	String[] msg = new String[] { ""								
 								, "당신의 생일을 축하합니다2"
 								, "당신의 생일을 축하합니다3"
 								, "당신의 생일을 축하합니다4"

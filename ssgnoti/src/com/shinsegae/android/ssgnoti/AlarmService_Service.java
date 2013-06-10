@@ -27,8 +27,9 @@ public class AlarmService_Service extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) // 10초마다 이리루 들어옵니다
 	{
 		
-		String noti_birth = "";
+		String noti_title = "";
 		String noti_name = "";
+		String noti_birth = "";
 		URL url;
 		
 		if(intent.hasExtra("songsList")){
@@ -41,19 +42,24 @@ public class AlarmService_Service extends BroadcastReceiver {
 				HashMap<java.lang.String, java.lang.String> hashMap = (HashMap<java.lang.String, java.lang.String>) iterator
 						.next();
 				noti_birth = hashMap.get("birth");
-				noti_name = hashMap.get("name")+" "+hashMap.get("dept");
+				String compDay = noti_birth.substring(5);
+				
+				Log.i("TTTT", "compDay : " + compDay);
+				
+				noti_name = hashMap.get("name")+" "+hashMap.get("position");
+				noti_title = "오늘의 생일자";
 				Calendar cal = Calendar.getInstance();
-			    cal.setTime(new java.util.Date(System.currentTimeMillis())); 
-			    String toDay = new java.text.SimpleDateFormat("yyyy.MM.dd").format(cal.getTime());
+			    cal.setTime(new java.util.Date(System.currentTimeMillis()));
+			    String toDay = new java.text.SimpleDateFormat("MM.dd").format(cal.getTime());
 			    
 			    // 생일인 날짜 비교하여 노티생성
-			    if(toDay.equals(noti_birth)){
+			    if(toDay.equals(compDay)){
 			    	NotificationManager notiManager = (NotificationManager) context
 							.getSystemService(Context.NOTIFICATION_SERVICE);
 					Notification noti = new Notification(R.drawable.ic_launcher,"생일알리미 노티",System.currentTimeMillis());
 					noti.flags = noti.flags|Notification.FLAG_AUTO_CANCEL;
 					noti.contentView = new RemoteViews(context.getPackageName(), R.layout.noti);
-					noti.contentView.setTextViewText(R.id.noti_birthday, noti_birth);
+					noti.contentView.setTextViewText(R.id.noti_title, noti_title);
 					noti.contentView.setTextViewText(R.id.noti_name, noti_name);
 					try {
 						url = new URL(hashMap.get("thumb_url"));
@@ -64,11 +70,16 @@ public class AlarmService_Service extends BroadcastReceiver {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					noti.tickerText = toDay;
+					noti.tickerText = "생일자가 있습니다. 축하해주러 가볼까요?";
 					Intent intent1 = new Intent(context,MainActivity.class);
 					PendingIntent pi = PendingIntent.getActivity(context, 0, intent1, 0);
 					noti.contentIntent = pi;
 					notiManager.notify(1,noti);
+					
+					
+
+					Log.i("TTTT",
+							"firstTime : " + System.currentTimeMillis() );
 			    }
 			}
 		}

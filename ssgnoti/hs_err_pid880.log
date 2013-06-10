@@ -1,0 +1,107 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (classFileParser.cpp:3494), pid=880, tid=5392
+#  Error: ShouldNotReachHere()
+#
+# JRE version: 6.0_26-b03
+# Java VM: Java HotSpot(TM) Client VM (20.1-b02 mixed mode windows-x86 )
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x003f7800):  JavaThread "Unknown thread" [_thread_in_vm, id=5392, stack(0x00bd0000,0x00c20000)]
+
+Stack: [0x00bd0000,0x00c20000],  sp=0x00c1f898,  free space=318k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x13379a]
+V  [jvm.dll+0x12e6fb]
+V  [jvm.dll+0x163fe]
+V  [jvm.dll+0x17c1f]
+V  [jvm.dll+0x26cc5]
+V  [jvm.dll+0x27506]
+V  [jvm.dll+0x278b5]
+V  [jvm.dll+0x27949]
+V  [jvm.dll+0x27a0c]
+V  [jvm.dll+0x27a8a]
+V  [jvm.dll+0x27b6d]
+V  [jvm.dll+0x27e39]
+V  [jvm.dll+0x6c523]
+V  [jvm.dll+0x6c8fc]
+V  [jvm.dll+0xf9d5c]
+V  [jvm.dll+0x11864b]
+V  [jvm.dll+0x9ec30]
+C  [javaw.exe+0x1657]
+C  [javaw.exe+0x1e2c]
+C  [javaw.exe+0x8644]
+C  [kernel32.dll+0xb729]  GetModuleFileNameA+0x1ba
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x003f7800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=5392, stack(0x00bd0000,0x00c20000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Dynamic libraries:
+0x00400000 - 0x00424000 	C:\Program Files\Java\jdk1.6.0_26\bin\javaw.exe
+0x7c930000 - 0x7c9ce000 	C:\WINDOWS\system32\ntdll.dll
+0x7c7d0000 - 0x7c900000 	C:\WINDOWS\system32\kernel32.dll
+0x77f50000 - 0x77ff8000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x77d80000 - 0x77e13000 	C:\WINDOWS\system32\RPCRT4.dll
+0x77ef0000 - 0x77f01000 	C:\WINDOWS\system32\Secur32.dll
+0x77cf0000 - 0x77d80000 	C:\WINDOWS\system32\USER32.dll
+0x77e20000 - 0x77e69000 	C:\WINDOWS\system32\GDI32.dll
+0x762e0000 - 0x762fd000 	C:\WINDOWS\system32\IMM32.DLL
+0x62340000 - 0x62349000 	C:\WINDOWS\system32\LPK.DLL
+0x73f80000 - 0x73feb000 	C:\WINDOWS\system32\USP10.dll
+0x10000000 - 0x1004f000 	C:\WINDOWS\INCOPS3\icdcnl.dll
+0x770d0000 - 0x7715b000 	C:\WINDOWS\system32\OLEAUT32.dll
+0x77bc0000 - 0x77c18000 	C:\WINDOWS\system32\msvcrt.dll
+0x76970000 - 0x76aae000 	C:\WINDOWS\system32\ole32.dll
+0x00990000 - 0x009e6000 	C:\WINDOWS\INCOPS3\ICATCDLL.dll
+0x7c340000 - 0x7c396000 	C:\Program Files\Java\jdk1.6.0_26\jre\bin\msvcr71.dll
+0x6d8a0000 - 0x6db4f000 	C:\Program Files\Java\jdk1.6.0_26\jre\bin\client\jvm.dll
+0x76af0000 - 0x76b1b000 	C:\WINDOWS\system32\WINMM.dll
+0x6d850000 - 0x6d85c000 	C:\Program Files\Java\jdk1.6.0_26\jre\bin\verify.dll
+0x6d3d0000 - 0x6d3ef000 	C:\Program Files\Java\jdk1.6.0_26\jre\bin\java.dll
+0x76ba0000 - 0x76bab000 	C:\WINDOWS\system32\PSAPI.DLL
+0x6d890000 - 0x6d89f000 	C:\Program Files\Java\jdk1.6.0_26\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=utf-8 -Xbootclasspath:C:\android\adt-bundle-windows-x86-20130219\sdk\platforms\android-15\android.jar;C:\android\adt-bundle-windows-x86-20130219\sdk\add-ons\addon-google_apis-google-15\libs\effects.jar;C:\android\adt-bundle-windows-x86-20130219\sdk\add-ons\addon-google_apis-google-15\libs\usb.jar;C:\android\adt-bundle-windows-x86-20130219\sdk\add-ons\addon-google_apis-google-15\libs\maps.jar 
+java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 3186 -testLoaderClass org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestLoader -loaderpluginname org.eclipse.jdt.junit.runtime -classNames test.DateTest
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jre6
+PATH=C:\Program Files\Wizvera\Delfino;C:\Program Files\MKS Toolkit\mksnt;C:\PROGRA~1\MKSTOO~1\bin;C:\PROGRA~1\MKSTOO~1\bin\X11;C:\PROGRA~1\MKSTOO~1\mksnt;C:\IBM\InformationServer\ASBNode\apps\jre\bin\classic;C:\IBM\InformationServer\ASBNode\lib\cpp;C:\IBM\InformationServer\ASBNode\apps\proxy\cpp\vc60\MT_dll\bin;D:\oracle\product\10.2.0\db_1\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\Softcamp\SDS;C:\WINDOWS\Softcamp\SDK;C:\WINDOWS\Softcamp\VSD;C:\Program Files\Windows Imaging\;C:\Program Files\Java\jre6\bin;C:\Program Files\Java\jre6\bin;C:\Program Files\IDM Computer Solutions\UltraEdit\
+USERNAME=111814
+SHELL=C:/PROGRA~1/MKSTOO~1/mksnt/sh.exe
+DISPLAY=:0.0
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 37 Stepping 5, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows XP Build 2600 Service Pack 3
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 37 stepping 5, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+Memory: 4k page, physical 3592652k(1349572k free), swap 5525960k(2824084k free)
+
+vm_info: Java HotSpot(TM) Client VM (20.1-b02) for windows-x86 JRE (1.6.0_26-b03), built on May  4 2011 00:50:59 by "java_re" with MS VC++ 7.1 (VS2003)
+
+time: Mon Jun 10 15:00:21 2013
+elapsed time: 0 seconds
+

@@ -1,0 +1,13 @@
+<resources>
+	<string-array name="entries_dept">
+		<item>온라인백화점</item>
+		<item>백화점</item>
+		<item>이마트</item>
+	</string-array>
+	
+	<string-array name="entryValues_dept">
+		<item>FFFF0000</item>
+		<item>FF00FF00</item>
+		<item>FF0000FF</item>
+	</string-array>
+</resources>

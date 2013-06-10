@@ -53,7 +53,7 @@ public class LazyAdapter extends BaseAdapter {
         // Setting all values in listview
         name.setText(song.get(MainActivity.KEY_NAME)+" "+song.get(MainActivity.KEY_POSITION));
         birthday.setText(song.get(MainActivity.KEY_BIRTH));
-        d_day.setText(song.get(MainActivity.KEY_POSITION));
+        d_day.setText(song.get(MainActivity.KEY_D_DAY));
         imageLoader.DisplayImage(song.get(MainActivity.KEY_THUMB_URL), thumb_image);
         return vi;
     }

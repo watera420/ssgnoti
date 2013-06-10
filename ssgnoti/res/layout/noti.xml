@@ -25,25 +25,25 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/noti_name"
+        android:id="@+id/noti_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:text="NAME"
+        android:text="오늘의 생일자"
         android:textColor="#040404"
         android:textSize="15dip"
         android:textStyle="bold"
         android:typeface="sans" />
     
 	<TextView
-	    android:id="@+id/noti_birthday"
+	    android:id="@+id/noti_name"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_alignBottom="@+id/thumbnail"
 	    android:layout_toRightOf="@+id/thumbnail"
-	    android:text="birthday"
+	    android:text="name_position"
 	    android:textColor="#343434"
 	    android:textSize="10dip" />
 
