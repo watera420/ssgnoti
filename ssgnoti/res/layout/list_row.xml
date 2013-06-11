@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_selector"
     android:orientation="horizontal"
     android:padding="5dip" >
 
@@ -32,20 +31,6 @@
 
     <!-- Rightend Duration -->
 
-    <TextView
-        android:id="@+id/d_day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/name"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/name"
-        android:layout_marginRight="5dip"
-        android:layout_toRightOf="@+id/name"
-        android:gravity="right"
-        android:text="D-Day"
-        android:textColor="#10bcc9"
-        android:textSize="10dip"
-        android:textStyle="bold" />
 
     <!-- Rightend Arrow -->
 
@@ -58,28 +43,47 @@
         android:src="@drawable/arrow" />
 
     <TextView
-        android:id="@+id/birthday"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/thumbnail"
-        android:layout_alignRight="@+id/name"
-        android:layout_below="@+id/imageView1"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="birthday"
-        android:textColor="#343434"
-        android:textSize="10dip" />
-
-    <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/birthday"
-        android:layout_alignTop="@+id/thumbnail"
+        android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/thumbnail"
         android:text="NAME"
         android:textColor="#040404"
-        android:textSize="15dip"
+        android:textSize="17dip"
         android:textStyle="bold"
         android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/birthday"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/thumbnail"
+        android:layout_alignLeft="@+id/name"
+        android:text="birthday"
+        android:textColor="#343434"
+        android:textSize="15dip" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/name"
+        android:layout_toLeftOf="@+id/imageView1"
+        android:background="@drawable/sinc1_ui_08_content_daybg"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/d_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="D-Day"
+            android:textColor="#ffffff"
+            android:textSize="20dip"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 </RelativeLayout>

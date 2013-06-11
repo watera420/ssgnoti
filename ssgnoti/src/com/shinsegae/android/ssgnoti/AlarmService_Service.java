@@ -26,19 +26,21 @@ public class AlarmService_Service extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) // 10초마다 이리루 들어옵니다
 	{
-		
+Log.i("aaaa","aaaaa"  );		
 		String noti_title = "";
 		String noti_name = "";
 		String noti_birth = "";
 		URL url;
 		
 		if(intent.hasExtra("songsList")){
-			
+Log.i("bbbb","bbbbb"  );				
 			ArrayList<HashMap<String, String>> songsList = (ArrayList<HashMap<String, String>>)intent.getExtras().get("songsList");
 			
 			Iterator<HashMap<String, String>> iterator = songsList.iterator();
-			
+Log.i("cccc","ccccc" +iterator.hasNext() );		
+ 
 			while (iterator.hasNext()) {
+Log.i("dddd","dddd" +iterator.hasNext() );
 				HashMap<java.lang.String, java.lang.String> hashMap = (HashMap<java.lang.String, java.lang.String>) iterator
 						.next();
 				noti_birth = hashMap.get("birth");
