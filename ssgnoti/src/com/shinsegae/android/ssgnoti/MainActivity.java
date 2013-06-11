@@ -15,16 +15,13 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	// All static variables
@@ -36,15 +33,36 @@ public class MainActivity extends Activity {
 	ListView list;
 	LazyAdapter adapter;
 	ArrayList<HashMap<String, String>> songsList;
-	private Toast mToast;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		String deptsetl = loadSelectedCode();
+		// 부서 코드 체크
+		String selectedCode = loadSelectedCode();
+		if (selectedCode == null) {
+			showDeptList();
+			return;
+		} else {
+			
+			refreshList();
+			
+		}
 
+	}
+
+	public void refreshList() {
+		loadData();
+		
+		sort();
+		
+		showList();
+		
+		alarm();
+	}
+
+	public void loadData() {
 		songsList = new ArrayList<HashMap<String, String>>();
 
 		XMLParser parser = new XMLParser();
@@ -61,6 +79,7 @@ public class MainActivity extends Activity {
 
 			String a = parser.getValue(e, "dept");
 
+			String deptsetl = loadSelectedCode();
 			if (a.equals(deptsetl)) {
 				map.put("id", parser.getValue(e, "id"));
 				map.put("name", parser.getValue(e, "name"));
@@ -86,13 +105,6 @@ public class MainActivity extends Activity {
 				songsList.add(map);
 			}
 		}
-
-		sort();
-
-		showList();
-
-		alarm();
-
 	}
 
 	public void sort() {
@@ -106,7 +118,6 @@ public class MainActivity extends Activity {
 
 			public int compare(Map<String, String> first,
 					Map<String, String> second) {
-				// TODO: Null checking, both for maps and values
 				String firstValue = first.get(key);
 				String secondValue = second.get(key);
 				return firstValue.compareTo(secondValue);
@@ -169,31 +180,25 @@ public class MainActivity extends Activity {
 	}
 
 	public String loadSelectedCode() {
-		String deptsetl = getIntent().getStringExtra("dept");
+		String deptsetl = DataSource.selectedDept;
 		TextView dept2 = (TextView) findViewById(R.id.dept2);
 		dept2.setText(deptsetl);
 		return deptsetl;
 	}
 
-	private Integer getDday(String date) {
-		String yyyy = date.substring(0, 4);
-		String mm = date.substring(5, 7);
-		String dd = date.substring(8, 10);
-		int i_yyyy = Integer.parseInt(yyyy);
-		int i_mm = Integer.parseInt(mm) - 1;
-		int i_dd = Integer.parseInt(dd);
-
-		yDay.set(2013, i_mm, i_dd);
-
-		long diffSec = (yDay.getTimeInMillis() - toDay.getTimeInMillis()) / 1000; // 초
-		Integer diffDay = (int) (diffSec / (60 * 60 * 24));
-		return diffDay;
+	public void dept_btn(View v) {
+		showDeptList();
 	}
 
-	public void dept_btn(View v) {
+	public void showDeptList() {
 		Intent intent = new Intent(this, DeptSetlActivity.class);
-
-		startActivity(intent);
+		startActivityForResult(intent, 0);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		refreshList();
 	}
 
 }
