@@ -37,7 +37,7 @@ public class DeptSetlActivity extends Activity implements OnItemClickListener {
 		// 클릭된 아이템의 포지션을 이용해 스트링어레이에서 아이템을 꺼내온다.
 
 		String selectedDept = adapter.getItem(arg2);
-		DataSource.save(selectedDept);
+		new DataSource(this).save(selectedDept);
 		finish();
 
 	}

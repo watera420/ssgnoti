@@ -180,7 +180,7 @@ public class MainActivity extends Activity {
 	}
 
 	public String loadSelectedCode() {
-		String deptsetl = DataSource.getSelectedDept(this);
+		String deptsetl = new DataSource(this).getSelectedDept();
 		TextView dept2 = (TextView) findViewById(R.id.dept2);
 		dept2.setText(deptsetl);
 		return deptsetl;

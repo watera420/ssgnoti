@@ -10,42 +10,49 @@ import java.io.InputStream;
 import android.content.Context;
 
 public class DataSource {
-	static Context context;
-	private static String selectedDept;
+	Context context;
+	private String selectedDept;
 
-	public static void save(String selectedDept) {
-		DataSource.selectedDept = selectedDept;
+	public DataSource(Context context) {
+		this.context = context;
+	}
+
+	public void save(String selectedDept) {
+		this.selectedDept = selectedDept;
 		// 파일로 저장
 		saveCodeToFile(selectedDept);
 
 	}
 
-	private static void saveCodeToFile(String selectedDept2) {
-        BufferedOutputStream bos = null;
-        try {
-            bos = new BufferedOutputStream(context.openFileOutput(
-                    "file_dept", Context.MODE_PRIVATE));
-            bos.write(selectedDept2.getBytes());
-        } catch (FileNotFoundException ex) {
-        } catch (IOException ex) {
-        } finally {
-            try{if (bos != null)  {
-                bos.flush();
-                bos.close();}
-            }catch(Exception ex) {};
-        }
-		
+	private void saveCodeToFile(String selectedDept2) {
+		BufferedOutputStream bos = null;
+		try {
+			bos = new BufferedOutputStream(context.openFileOutput("file_dept",
+					Context.MODE_PRIVATE));
+			bos.write(selectedDept2.getBytes());
+		} catch (FileNotFoundException ex) {
+		} catch (IOException ex) {
+		} finally {
+			try {
+				if (bos != null) {
+					bos.flush();
+					bos.close();
+				}
+			} catch (Exception ex) {
+			}
+			;
+		}
+
 	}
 
-	public static String getSelectedDept(Context context) {
+	public String getSelectedDept() {
 		try {
-			DataSource.context = context;
 			FileInputStream fis = context.openFileInput("file_dept");
-			selectedDept = loadCodeFromFile(fis);
+			this.selectedDept = loadCodeFromFile(fis);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		return selectedDept;
 	}
 
