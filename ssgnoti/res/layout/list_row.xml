@@ -76,12 +76,14 @@
 
         <TextView
             android:id="@+id/d_day"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="D-Day"
             android:textColor="#ffffff"
-            android:textSize="20dip"
+            android:textSize="20sp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
             android:textStyle="bold" />
 
     </LinearLayout>
