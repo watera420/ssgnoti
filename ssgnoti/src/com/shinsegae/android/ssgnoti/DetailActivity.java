@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -31,7 +32,6 @@ public class DetailActivity extends Activity {
 		Intent intent = getIntent();
 		
 		HashMap<String, String> hashMap = (HashMap<String, String>)intent.getExtras().get("songsList");
-		//String  hashMap.get("id");
 		TextView empno = (TextView)findViewById(R.id.empno);
 		empno.setText(hashMap.get("id"));
 		
