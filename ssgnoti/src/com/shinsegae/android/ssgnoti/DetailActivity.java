@@ -45,7 +45,7 @@ public class DetailActivity extends Activity {
 		birthday.setText(hashMap.get("birth"));
 		
 		phone = (TextView)findViewById(R.id.phone);
-		phone.setText(hashMap.get("pn"));
+		phone.setText(hashMap.get("pn").substring(0,3)+"-"+hashMap.get("pn").substring(3,7)+"-"+hashMap.get("pn").substring(7,11));
 		
 		ImageView imageView = (ImageView)findViewById(R.id.faceImage);
 		

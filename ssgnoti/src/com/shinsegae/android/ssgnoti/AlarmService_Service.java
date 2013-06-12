@@ -47,7 +47,7 @@ public class AlarmService_Service extends BroadcastReceiver {
 				noti_birth = hashMap.get("birth");
 				String compDay = noti_birth.substring(5);
 
-				noti_name = hashMap.get("name") + " " + hashMap.get("position");
+				noti_name = hashMap.get("name") + " " + hashMap.get("position")+"님의 생일입니다.";
 				noti_title = "오늘의 생일자";
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(new java.util.Date(System.currentTimeMillis()));
@@ -82,7 +82,7 @@ public class AlarmService_Service extends BroadcastReceiver {
 						e.printStackTrace();
 					}
 
-					noti.tickerText = "생일자가 있습니다. 축하해주러 가볼까요?";
+					noti.tickerText = "생일자가 있습니다. 축하 가볼까요?";
 
 					Intent intent1 = new Intent(context, DetailActivity.class);
 					intent1.putExtra("songsList", selHashMap);
