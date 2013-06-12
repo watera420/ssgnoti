@@ -66,6 +66,7 @@
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
                     android:text="사번  : "
+                    android:textColor="#000000"
                     android:textSize="20dp" />
 
                 <TextView
@@ -74,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Large Text"
+                    android:textColor="#000000"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="20dp" />
 
@@ -89,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="이름  : "
+                    android:textColor="#000000"
                     android:textSize="20dp" />
 
                 <TextView
@@ -97,6 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Large Text"
+                    android:textColor="#000000"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="20dp" />
 
@@ -112,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="소속  : "
+                    android:textColor="#000000"
                     android:textSize="20dp" />
 
                 <TextView
@@ -119,6 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:textColor="#000000"
                     android:text="Large Text"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="20dp" />
@@ -159,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="생년월일  : "
+                android:textColor="#000000"
                 android:textSize="20dp" />
 
             <TextView
@@ -167,6 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Large Text"
+                android:textColor="#000000"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20dp" />
 
@@ -182,6 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="전화번호  : "
+                android:textColor="#000000"
                 android:textSize="20dp" />
 
             <TextView
@@ -190,6 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Large Text"
+                android:textColor="#000000"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20dp" />
 

@@ -18,7 +18,6 @@ public class DeptSetlActivity extends Activity implements OnItemClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE); //액션바없앰
 		setContentView(R.layout.activity_deptset);
 
 		ListView lv = (ListView) findViewById(R.id.testListView);

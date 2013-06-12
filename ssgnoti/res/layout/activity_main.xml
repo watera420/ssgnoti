@@ -37,7 +37,7 @@
              android:id="@+id/dept_btn"
              android:layout_width="46dp"
              android:layout_height="wrap_content"
-             android:background="@drawable/sinc1_ui_04_abar_setting"
+             android:background="@drawable/sinc1_abar_seticon"
              android:gravity="center_vertical|center_horizontal|right"
              android:onClick="dept_btn" />
      </LinearLayout>
@@ -57,6 +57,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="부서 : "
+            android:textColor="#000000"
             android:textSize="20dp" />
 
         <TextView
@@ -66,6 +67,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="Large Text"
+            android:textColor="#000000"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="20dp" />
 
@@ -83,7 +85,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:cacheColorHint="#00000000"
-        android:dividerHeight="1dp"
+        android:dividerHeight="1px"
+        android:divider="#88888888"
         android:listSelector="@drawable/list_selector"
     />
     

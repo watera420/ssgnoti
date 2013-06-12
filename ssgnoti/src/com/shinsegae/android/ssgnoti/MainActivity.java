@@ -14,14 +14,18 @@ import org.w3c.dom.NodeList;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -35,10 +39,14 @@ public class MainActivity extends Activity {
 	LazyAdapter adapter;
 	ArrayList<HashMap<String, String>> songsList;
 
+	ProgressDialog mProgressBar;
+	myHandler handler = new myHandler();
+
+	private final int MSG_DATA_LOAD_END = 1;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE); //액션바없앰
 		setContentView(R.layout.activity_main);
 
 		// 부서 코드 체크
@@ -47,20 +55,40 @@ public class MainActivity extends Activity {
 			showDeptList();
 			return;
 		} else {
-			
 			refreshList();
-			
+			// new Thread(new Runnable() {
+			// @Override
+			// public void run() {
+			// showProgressBar();
+			// loadData();
+			// sort();
+			// Message msg = new Message();
+			// msg.what = MSG_DATA_LOAD_END;
+			// handler.handleMessage(msg);
+			// }
+			//
+			// }).run();
+			// // 비동기 처리
 		}
 
 	}
 
+	private void showProgressBar() {
+		mProgressBar = new ProgressDialog(MainActivity.this);
+		mProgressBar.setTitle("로딩중입니다.");
+		mProgressBar.show();
+	}
+
+	private void dismissProgressBar() {
+		if (mProgressBar != null) {
+			mProgressBar.cancel();
+		}
+	}
+
 	public void refreshList() {
 		loadData();
-		
 		sort();
-		
 		showList();
-		
 		alarm();
 	}
 
@@ -125,7 +153,7 @@ public class MainActivity extends Activity {
 				return firstValue.compareTo(secondValue);
 			}
 		}
-		
+
 		Collections.sort(songsList, new MapComparator(KEY_SORT)); // 오름차순 리스트정렬
 	}
 
@@ -196,11 +224,25 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, DeptSetlActivity.class);
 		startActivityForResult(intent, 0);
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		refreshList();
+	}
+
+	public class myHandler extends Handler {
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case MSG_DATA_LOAD_END:
+				dismissProgressBar();
+				showList();
+				alarm();
+				break;
+			}
+			super.handleMessage(msg);
+		}
 	}
 
 }
