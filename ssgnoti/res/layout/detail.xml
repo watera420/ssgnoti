@@ -23,6 +23,7 @@
          android:layout_height="48dp"
          android:layout_weight="0.93"
          android:gravity="left"
+         android:paddingTop="7dp"
          android:text="생일자 정보"
          android:textColor="#ffffff"
          android:textAppearance="?android:attr/textAppearanceLarge" />

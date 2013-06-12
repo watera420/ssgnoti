@@ -1,20 +1,31 @@
 package com.shinsegae.android.ssgnoti;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.shinsegae.android.ssgnoti.SelsmsActivity.SimpleAdapter;
+
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class DeptSetlActivity extends Activity implements OnItemClickListener {
+	ArrayList<String> msgList;
 	String[] msg = new String[] { "온라인백화점", "백화점", "POS&결제", "인사재무",
 			"WEB&BLOSSOM" };
 
 	ArrayAdapter<String> adapter;
-
+	SimpleAdapter simpleadapter;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,10 +33,13 @@ public class DeptSetlActivity extends Activity implements OnItemClickListener {
 
 		ListView lv = (ListView) findViewById(R.id.testListView);
 
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, msg);
+		msgList = new ArrayList<String>();
+		for (int i = 0; i < msg.length; i++) {
+			msgList.add(msg[i]);
+		}
 
-		lv.setAdapter(adapter);
+		simpleadapter = new SimpleAdapter(this, R.layout.list_row2, msgList);
+		lv.setAdapter(simpleadapter);
 
 		lv.setOnItemClickListener(this);
 
@@ -37,10 +51,37 @@ public class DeptSetlActivity extends Activity implements OnItemClickListener {
 
 		// 클릭된 아이템의 포지션을 이용해 스트링어레이에서 아이템을 꺼내온다.
 
-		String selectedDept = adapter.getItem(arg2);
+		String selectedDept = simpleadapter.getItem(arg2);
+		//String selectedDept = adapter.getItem(arg2);
 		new DataSource(this).save(selectedDept);
 		finish();
 
+	}
+	
+	class SimpleAdapter extends ArrayAdapter<String> {
+
+		private Activity activity;
+		private ArrayAdapter<String> data;
+		private LayoutInflater inflater = null;
+
+		public SimpleAdapter(Context context, int textViewResourceId,
+				List<String> objects) {
+			super(context, textViewResourceId, objects);
+			inflater = (LayoutInflater) context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View vi = convertView;
+			if (convertView == null)
+				vi = inflater.inflate(R.layout.list_row2, null);
+			TextView name = (TextView) vi.findViewById(R.id.name2); // duration
+			String dept = new String();
+			name.setText(simpleadapter.getItem(position));
+			return vi;
+		}
 	}
 
 }

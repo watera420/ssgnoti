@@ -23,6 +23,7 @@
          android:layout_height="48dp"
          android:layout_weight="0.93"
          android:gravity="left"
+         android:paddingTop="7dp"
          android:text="축하 문구"
          android:textColor="#ffffff"
          android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -38,7 +39,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:layout_gravity="left"
             android:background="@drawable/sinc1_ui_07_sabar_text2"
             android:text="" />
     
@@ -46,6 +47,7 @@
 	<ListView
 		android:layout_height="wrap_content"
 		android:id="@+id/listView1"
+		android:divider="#88888888"
 		android:layout_width="fill_parent"></ListView>
 
     
