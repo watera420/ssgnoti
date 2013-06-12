@@ -45,8 +45,8 @@
 
         <ImageView
             android:id="@+id/faceImage"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_width="130dip"
+            android:layout_height="130dip"
             android:layout_weight="0.17"
             android:src="@drawable/ic_launcher" />
 

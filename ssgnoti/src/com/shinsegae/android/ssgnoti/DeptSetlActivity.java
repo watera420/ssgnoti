@@ -20,8 +20,9 @@ import android.widget.TextView;
 
 public class DeptSetlActivity extends Activity implements OnItemClickListener {
 	ArrayList<String> msgList;
-	String[] msg = new String[] { "온라인백화점", "백화점", "POS&결제", "인사재무",
-			"WEB&BLOSSOM" };
+	String[] msg = new String[] { "DATA CENTER", "POS&결제팀", "Web&Blossom",
+			"계열사팀", "그룹정보보안팀", "그룹정보전략팀", "백화점팀", "에브리데이 리테일팀", "온라인백화점팀",
+			"이마트팀", "인사재무팀", "인터내셔날팀" };
 
 	ArrayAdapter<String> adapter;
 	SimpleAdapter simpleadapter;
