@@ -20,7 +20,11 @@ import android.widget.TextView;
 public class SelsmsActivity extends Activity implements OnItemClickListener {
 	ArrayList<String> msgList;
 	String[] msg = new String[] { "직접입력"
+<<<<<<< HEAD
 			, "더욱 큰 사랑과 행복이 항상 당신과  \n 함께 하길 바랍니다. \n 생일을 진심으로 축하해요."
+=======
+			, "더욱 큰 사랑과 행복이 항상 당신과  함께 하길 바랍니다.\n 생일을 진심으로 축하해요."
+>>>>>>> a2a10d1485252015160db9417cecb8b15b4da398
 			, "뜻 깊은 당신의 생일을 맞이하여\n진심으로 축하합니다"
 			, "     *~iiii~*\n    ∴┎★☆┒∴\n	∴┎♡생일♡┒∴\n	┏♣축하해요♧┒\n	┗★:*~**~*:☆┚",
 			"생일축하합니다" };
