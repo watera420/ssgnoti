@@ -17,21 +17,25 @@ import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 public class MainActivity extends Activity {
 	// All static variables
 	static final String URL = "http://1.234.89.248/1/birthinfo.xml";
 	static String KEY_SORT = "000"; // D-DAY
+
+	DatePicker pickerDate;
+	TimePicker pickerTime;
+	Button buttonSetAlarm;
 
 	Calendar yDay = Calendar.getInstance();
 	Calendar toDay = Calendar.getInstance();
@@ -40,7 +44,7 @@ public class MainActivity extends Activity {
 	ArrayList<HashMap<String, String>> songsList;
 
 	ProgressDialog mProgressBar;
-	myHandler handler = new myHandler();
+//	myHandler handler = new myHandler();
 
 	private final int MSG_DATA_LOAD_END = 1;
 
@@ -89,7 +93,7 @@ public class MainActivity extends Activity {
 		loadData();
 		sort();
 		showList();
-		alarm();
+		/*alarm();*/
 	}
 
 	public void loadData() {
@@ -135,6 +139,8 @@ public class MainActivity extends Activity {
 				songsList.add(map);
 			}
 		}
+
+		alarm(songsList);
 	}
 
 	public void sort() {
@@ -185,10 +191,13 @@ public class MainActivity extends Activity {
 	/**
 	 * 알람매니저
 	 */
-	public void alarm() {
+	public void alarm(ArrayList<HashMap<String, String>> songsList) {
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+		
+		
 		Intent intent = new Intent(this, AlarmService_Service.class);
 
+		Log.i("TTTT", songsList.toString());
 		intent.putExtra("songsList", songsList);
 
 		PendingIntent sender = PendingIntent.getBroadcast(this, 0, intent, 0);
@@ -204,7 +213,19 @@ public class MainActivity extends Activity {
 		final Calendar c = Calendar.getInstance();
 		c.setTimeInMillis(System.currentTimeMillis()); // 현재시간 셋팅
 
-		c.add(Calendar.SECOND, 10);
+		c.add(Calendar.SECOND, 1);
+
+/*		Calendar now = Calendar.getInstance();
+		pickerDate.init(now.get(Calendar.YEAR), now.get(Calendar.MONTH),
+				now.get(Calendar.DAY_OF_MONTH), null);
+
+		pickerTime.setCurrentHour(now.get(Calendar.HOUR_OF_DAY));
+		pickerTime.setCurrentMinute(now.get(Calendar.MINUTE));
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(pickerDate.getYear(), pickerDate.getMonth(),
+				pickerDate.getDayOfMonth(), pickerTime.getCurrentHour(),
+				pickerTime.getCurrentMinute(), 00);*/
 
 		am.set(AlarmManager.RTC, c.getTimeInMillis(), sender);
 	}
@@ -231,7 +252,7 @@ public class MainActivity extends Activity {
 		refreshList();
 	}
 
-	public class myHandler extends Handler {
+/*	public class myHandler extends Handler {
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
@@ -243,6 +264,6 @@ public class MainActivity extends Activity {
 			}
 			super.handleMessage(msg);
 		}
-	}
+	}*/
 
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -50,57 +49,4 @@
      android:textColor="#ffffff"
      android:textSize="15sp" />
 
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="5dip" >
-
-    <!-- ListRow Left sied Thumbnail image -->
-
-    <LinearLayout
-        android:id="@+id/thumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="5dip"
-        android:background="@drawable/image_bg"
-        android:padding="3dip" >
-
-        <ImageView
-            android:id="@+id/noti_list_image"
-            android:layout_width="50dip"
-            android:layout_height="50dip"
-            android:src="@drawable/jessica" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/noti_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/noti_name"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:gravity="center_vertical"
-        android:text="오늘의 생일자"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    
-	<TextView
-	    android:id="@+id/noti_name"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_alignBottom="@+id/thumbnail"
-	    android:layout_toRightOf="@+id/thumbnail"
-	    android:gravity="center_vertical"
-	    android:text="name_position"
-	    android:textColor="#ffffff"
-	    android:textSize="15sp" />
-
->>>>>>> a2a10d1485252015160db9417cecb8b15b4da398
 </RelativeLayout>
